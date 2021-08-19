@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ToDoList.Domain.Models
 {
-    public class BaseDto
+    public class BaseDTO
     {
         public string ToDoName { get; set; }
 

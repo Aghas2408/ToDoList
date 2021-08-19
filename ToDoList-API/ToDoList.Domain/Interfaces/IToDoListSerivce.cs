@@ -7,14 +7,14 @@ namespace ToDoList.Domain.Interfaces
 {
     public interface IToDoListSerivce
     {
-        Task<List<ToDoDto>> GetToDoList();
+        Task<List<ToDoDTO>> GetToDoList(string id);
 
-        Task<ToDoDto> GetToDo(int id);
+        Task<ToDoDTO> GetToDo(int id);
 
-        Task Create(CreateToDoDTO toDo);
+        Task Create(CreateToDoDTO toDo, string id);
 
         Task Delete(int id);
 
-        Task<int> Update(ToDoDto toDo);
+        Task<int> Update(ToDoDTO toDo);
     }
 }

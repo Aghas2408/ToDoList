@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ToDoList.Models;
 
 namespace ToDoList.Infrastructure.Migrations
 {
     [DbContext(typeof(ToDoListDBContext))]
-    partial class ToDoListDBContextModelSnapshot : ModelSnapshot
+    [Migration("20210812085204_Users")]
+    partial class Users
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -64,13 +66,13 @@ namespace ToDoList.Infrastructure.Migrations
 
             modelBuilder.Entity("ToDoList.Models.ToDo", b =>
                 {
-                    b.HasOne("ToDoList.Infrastructure.Models.User", "User")
+                    b.HasOne("ToDoList.Infrastructure.Models.User", "Company")
                         .WithMany("ToDos")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("User");
+                    b.Navigation("Company");
                 });
 
             modelBuilder.Entity("ToDoList.Infrastructure.Models.User", b =>

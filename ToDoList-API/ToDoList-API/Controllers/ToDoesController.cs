@@ -10,6 +10,8 @@ using ToDoList.Models;
 using ToDoList.Domain;
 using ToDoList.Domain.Interfaces;
 using ToDoList.Domain.Models;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace ToDoList.Controllers
 {
@@ -26,10 +28,12 @@ namespace ToDoList.Controllers
         }
 
         // GET: api/ToDoes
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetToDos()
         {
-            var result = await _toDoListSerivce.GetToDoList();
+            var userId = HttpContext.User.FindFirst("Id").Value;
+            var result = await _toDoListSerivce.GetToDoList(userId);
             return Ok(result);
         }
 
@@ -43,9 +47,11 @@ namespace ToDoList.Controllers
 
         // PUT: api/ToDoes/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize]
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutToDo([FromRoute] int id, ToDoDto toDo)
+        public async Task<IActionResult> PutToDo([FromRoute] int id, ToDoDTO toDo)
         {
+            toDo.UserId = Int32.Parse(HttpContext.User.FindFirst("Id").Value);
             toDo.Id = id;
             await _toDoListSerivce.Update(toDo);
             return Ok(204);
@@ -53,19 +59,22 @@ namespace ToDoList.Controllers
 
         // POST: api/ToDoes
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> PostToDo(CreateToDoDTO toDo)
         {
-            await _toDoListSerivce.Create(toDo);
-            return Ok(201);
+            var userId = HttpContext.User.FindFirst("Id").Value;
+            await _toDoListSerivce.Create(toDo, userId);
+            return Ok(toDo);
         }
 
         //// DELETE: api/ToDoes/5
+                [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteToDo(int id)
         {
             await _toDoListSerivce.Delete(id);
-            return Ok(204);
+            return Ok(id);
         }
     }
 }

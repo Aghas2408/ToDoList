@@ -1,29 +1,27 @@
 import React from 'react';
 import { RiCloseCircleLine } from 'react-icons/ri';
+import { ToDoContainer, IconContainer, CheckboxContainer } from './styles';
 
 const ToDo = ({ todos, removeToDo, updateToDo }) => {
   return todos.map((todo, index) => (
-    <div
-      className={todo.isComplete ? 'todo-row complete' : 'todo-row'}
-      key={index}
-    >
-      <div className='checkbox'>
+    <ToDoContainer key={index}>
+      <CheckboxContainer>
         <input
           type='checkbox'
           onChange={() => updateToDo(todo)}
           checked={todo.checked}
         />
-      </div>
+      </CheckboxContainer>
       <div key={todo.id}>
         {todo.checked ? <del>{todo.toDoName}</del> : todo.toDoName}
       </div>
-      <div className='icons'>
+      <IconContainer>
         <RiCloseCircleLine
-          onClick={() => removeToDo()}
-          className='delete-icon'
+          onClick={() => removeToDo(todo.id)}
+          style={{ marginRight: 5, color: 'white' }}
         />
-      </div>
-    </div>
+      </IconContainer>
+    </ToDoContainer>
   ));
 };
 

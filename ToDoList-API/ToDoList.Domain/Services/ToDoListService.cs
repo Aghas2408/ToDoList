@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Mapster;
 using ToDoList.Domain.Interfaces;
@@ -17,8 +19,9 @@ namespace ToDoList.Domain.Services
             _todoRepository = todoRepository;
         }
 
-        public async Task Create(CreateToDoDTO createToDo)
+        public async Task Create(CreateToDoDTO createToDo, string id)
         {
+            createToDo.UserId = Int32.Parse(id);
             var toDo = createToDo.Adapt<ToDo>();
             await _todoRepository.Create(toDo);
         }
@@ -28,22 +31,23 @@ namespace ToDoList.Domain.Services
             await _todoRepository.Delete(id);
         }
 
-        public async Task<ToDoDto> GetToDo(int id)
+        public async Task<ToDoDTO> GetToDo(int id)
         {
             var todo = await _todoRepository.GetById(id);
-            var todoDto = todo.Adapt<ToDoDto>();
+            var todoDto = todo.Adapt<ToDoDTO>();
             return todoDto;
         }
 
-        public async Task<List<ToDoDto>> GetToDoList()
+        public async Task<List<ToDoDTO>> GetToDoList(string id)
         {
             var todoList = await _todoRepository.GetAll();
-            var todoListDto = todoList.Adapt<List<ToDoDto>>();
+            var list = todoList.Where(i => i.UserId == Int32.Parse(id));
+            var todoListDto = list.Adapt<List<ToDoDTO>>();
 
             return todoListDto;
         }
 
-        public async Task<int> Update(ToDoDto updateToDo)
+        public async Task<int> Update(ToDoDTO updateToDo)
         {
             var ToDo = updateToDo.Adapt<ToDo>();
             return await _todoRepository.Update(ToDo);

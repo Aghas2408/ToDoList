@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ToDoList.Models;
 
 namespace ToDoList.Infrastructure.Migrations
 {
     [DbContext(typeof(ToDoListDBContext))]
-    partial class ToDoListDBContextModelSnapshot : ModelSnapshot
+    [Migration("20210812101149_UpdatedRelationship")]
+    partial class UpdatedRelationship
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

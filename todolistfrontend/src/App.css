@@ -1,3 +1,6 @@
+  
+@import url('https://fonts.googleapis.com/css2?family=Sora&display=swap');
+
 .App {
   text-align: center;
 }
@@ -41,8 +44,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
-    'Lucida Sans', Arial, sans-serif;
+  font-family: 'Sora', sans-serif;
 }
 
 body {
@@ -62,6 +64,7 @@ body {
 }
 
 h1 {
+  text-align: center;
   margin: 32px 0;
   color: #fff;
   font-size: 24px;
@@ -73,13 +76,15 @@ h1 {
 }
 
 .todo-form {
+  display: flex;
+  justify-content: center;
   margin-bottom: 32px;
 }
 
 .todo-input {
   padding: 14px 32px 14px 16px;
   border-radius: 4px 0 0 4px;
-  border: 2px solid #5d0cff;
+  border: 2px solid #1AC4F9;
   outline: none;
   width: 320px;
   background: transparent;
@@ -96,12 +101,8 @@ h1 {
   border-radius: 0 4px 4px 0;
   cursor: pointer;
   outline: none;
-  background: linear-gradient(
-    90deg,
-    rgba(93, 12, 255, 1) 0%,
-    rgba(155, 0, 250, 1) 100%
-  );
-  color: #fff;
+  background-color: #1AC4F9;
+  color: rgb(0, 0, 0);
   text-transform: capitalize;
 }
 
