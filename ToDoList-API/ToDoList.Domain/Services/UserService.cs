@@ -17,7 +17,7 @@ namespace ToDoList.Domain.Services
             _userRepository = userRepository;
         }
 
-        public async  Task Create(UserDTO user)
+        public async Task Create(UserDTO user)
         {
             var _user = user.Adapt<User>();
             await _userRepository.Create(_user);
@@ -37,7 +37,5 @@ namespace ToDoList.Domain.Services
             var userDTO = user.Adapt<UserDTO>();
             return userDTO;
         }
-
-
     }
 }

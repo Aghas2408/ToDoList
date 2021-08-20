@@ -3,8 +3,15 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import axios from 'axios';
-import '../../../components/Form.css';
 import { AuthContext } from '../../../context/Auth';
+import {
+  FormContainerRight,
+  Form,
+  FormInputsContainer,
+  FormLable,
+  FormInput,
+  FormInputBtn,
+} from '../../FormElemetsStyles';
 
 const FormSignIn = () => {
   const { login } = useContext(AuthContext);
@@ -34,42 +41,36 @@ const FormSignIn = () => {
   });
 
   return (
-    <div className='form-content-right'>
-      <form className='form' onSubmit={handleSubmit(submitForm)}>
+    <FormContainerRight>
+      <Form onSubmit={handleSubmit(submitForm)}>
         <h1>Sign in to your account</h1>
-        <div className='form-inputs'>
-          <label htmlFor='username' className='form-label'>
-            UserName
-          </label>
-          <input
+        <FormInputsContainer>
+          <FormLable htmlFor='username'>UserName</FormLable>
+          <FormInput
             {...register('username')}
             id='username'
             name='username'
-            className='form-input'
             placeholder='Enter your UserName'
           />
           <p>{errors.username}</p>
-        </div>
+        </FormInputsContainer>
 
-        <div className='form-inputs'>
-          <label htmlFor='password' className='form-label'>
-            Password
-          </label>
-          <input
+        <FormInputsContainer>
+          <FormLable htmlFor='password'>Password</FormLable>
+          <FormInput
             {...register('password')}
             id='password'
             type='password'
             name='password'
-            className='form-input'
             placeholder='Enter your password'
           />
           <p>{errors.password}</p>
-        </div>
-        <button className='form-input-btn' type='submit'>
+        </FormInputsContainer>
+        <FormInputBtn className='form-input-btn' type='submit'>
           Sign In
-        </button>
-      </form>
-    </div>
+        </FormInputBtn>
+      </Form>
+    </FormContainerRight>
   );
 };
 

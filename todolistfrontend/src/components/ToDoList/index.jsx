@@ -5,6 +5,7 @@ import {
   removeToDo,
   updateToDo,
 } from '../../services/todo.services';
+import { HeaderContainer } from './styles';
 import ToDoForm from '../ToDoForm';
 import ToDo from '../ToDo';
 
@@ -24,6 +25,7 @@ const ToDoList = () => {
   };
 
   const removeToDoData = async (id) => {
+    debugger;
     const data = await removeToDo(id);
     const removeArr = [...todos].filter((todo) => todo.id !== data);
     setTodos(removeArr);
@@ -44,7 +46,7 @@ const ToDoList = () => {
 
   return (
     <div>
-      <h1>What's the Plan for Today?</h1>
+      <HeaderContainer>What's the Plan for Today?</HeaderContainer>
       <ToDoForm onSubmit={addToDoData} />
       <ToDo
         todos={todos}

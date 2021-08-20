@@ -1,11 +1,9 @@
 import axios from 'axios';
 
-
 axios.interceptors.request.use(
-
   function (config) {
     const token = localStorage.getItem('token');
-    config.headers.Authorization = `Bearer ${token}`; 
+    config.headers.Authorization = `Bearer ${token}`;
     return config;
   },
   function (error) {
@@ -41,14 +39,12 @@ export const removeToDo = async (id) => {
 
 export const updateToDo = async (todo) => {
   try {
-    await axios.put(
-      `https://localhost:5001/api/ToDoes/${todo.id}`,
-      {
-        id: todo.id,
-        toDoName: todo.toDoName,
-        checked: !todo.checked,
-      });
-    return todo.id
+    await axios.put(`${API_URL}/ToDoes/${todo.id}`, {
+      id: todo.id,
+      toDoName: todo.toDoName,
+      checked: !todo.checked,
+    });
+    return todo.id;
   } catch (e) {
     console.log(e);
   }
@@ -56,7 +52,7 @@ export const updateToDo = async (todo) => {
 
 export const getToDos = async () => {
   try {
-    const res = await axios.get('https://localhost:5001/api/ToDoes');
+    const res = await axios.get(`${API_URL}/ToDoes`);
     const data = res.data;
     return data;
   } catch (e) {

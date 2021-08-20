@@ -1,8 +1,16 @@
 import React from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { useForm } from "react-hook-form";
-import '../../../components/Form.css'
+import { useForm } from 'react-hook-form';
+import {
+  FormContainerRight,
+  Form,
+  FormInputsContainer,
+  FormLable,
+  FormInput,
+  FormInputBtn,
+  FormSpan,
+} from '../../FormElemetsStyles';
 
 const FormSignUp = ({ submitForm }) => {
   const schema = yup.object().shape({
@@ -11,82 +19,72 @@ const FormSignUp = ({ submitForm }) => {
     password: yup.string().required(),
   });
 
-  const { register, handleChange, values, handleSubmit,formState: { errors } } = useForm({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
     resolver: yupResolver(schema),
   });
 
   return (
-    <div className='form-content-right'>
-      <form className='form' onSubmit={handleSubmit}>
+    <FormContainerRight>
+      <Form onSubmit={handleSubmit}>
         <h1>
           Get started with us today! Create your account by filling out the
           information below
         </h1>
-        <div className='form-inputs'>
-          <label htmlFor='email' className='form-label'>
-            Email
-          </label>
-          <input
-          {...register('password')}
+        <FormInputsContainer>
+          <FormLable htmlFor='email'>Email</FormLable>
+          <FormInput
+            {...register('password')}
             id='email'
             type='email'
             name='email'
-            className='form-input'
             placeholder='Enter your Email'
           />
-        <p>{errors.email}</p>
-        </div>
-        <div className='form-inputs'>
-          <label htmlFor='username' className='form-label'>
-            UserName
-          </label>
-          <input
-          {...register('password')}
+          <p>{errors.email}</p>
+        </FormInputsContainer>
+        <FormInputsContainer>
+          <FormLable htmlFor='username'>UserName</FormLable>
+          <FormInput
+            {...register('password')}
             id='username'
             type='text'
             name='username'
-            className='form-input'
             placeholder='Enter your UserName'
           />
-    <p>{errors.username}</p>
-        </div>
-        <div className='form-inputs'>
-          <label htmlFor='password' className='form-label'>
-            Password
-          </label>
-          <input
-          {...register('password')}
+          <p>{errors.username}</p>
+        </FormInputsContainer>
+        <FormInputsContainer>
+          <FormLable htmlFor='password'>Password</FormLable>
+          <FormInput
+            {...register('password')}
             id='password'
             type='password'
             name='password'
-            className='form-input'
             placeholder='Enter your password'
           />
-                   <p>{errors.password}</p>
-        </div>
-        <div className='form-inputs'>
-          <label htmlFor='password2' className='form-label'>
-            Confirm Password
-          </label>
-          <input
-                    {...register('password')}
+          <p>{errors.password}</p>
+        </FormInputsContainer>
+        <FormInputsContainer>
+          <FormLable htmlFor='password2'>Confirm Password</FormLable>
+          <FormInput
+            {...register('password')}
             id='password2'
             type='password'
             name='password2'
-            className='form-input'
             placeholder='Enter your password again'
           />
-                   <p>{errors.password2}</p>
-        </div>
-        <button className='form-input-btn'
-         type='submit'>
-             Sign Up
-        </button>
-        <span className='form-input-login'>
-          Already have an accont? Login <a href='http://localhost:3000/login'>here</a>
-        </span>
-      </form>
-    </div>
+          <p>{errors.password2}</p>
+        </FormInputsContainer>
+        <FormInputBtn type='submit'>Sign Up</FormInputBtn>
+        <FormSpan>
+          Already have an accont? Login{' '}
+          <a href='http://localhost:3000/login'>here</a>
+        </FormSpan>
+      </Form>
+    </FormContainerRight>
   );
 };
 

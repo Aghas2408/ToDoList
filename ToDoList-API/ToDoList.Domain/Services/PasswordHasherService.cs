@@ -2,7 +2,7 @@
 
 namespace ToDoList.Domain.Services
 {
-    public class PasswordHasherService: IPasswordHasherService
+    public class PasswordHasherService : IPasswordHasherService
     {
         public string HashPassword(string password)
         {

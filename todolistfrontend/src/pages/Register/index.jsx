@@ -1,8 +1,13 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import FormSignUp from './FormSignUp';
 import FormSuccess from './FormSuccess';
-import '../../components/Form.css';
 import axios from 'axios';
+import {
+  FormContainer,
+  CloseBtn,
+  FormContainerLeft,
+  FormImg,
+} from '../FormElemetsStyles';
 
 const Register = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -18,17 +23,17 @@ const Register = () => {
 
   return (
     <>
-      <div className='form-container'>
-        <span className='close-btn'>x</span>
-        <div className='form-content-left'>
-          <img src='img/img-2.png' alt='spaceship' className='form-img' />
-        </div>
+      <FormContainer>
+        <CloseBtn>x</CloseBtn>
+        <FormContainerLeft>
+          <FormImg src='img/img-2.png' alt='spaceship' />
+        </FormContainerLeft>
         {!isSubmitted ? (
           <FormSignUp submitForm={submitForm} />
         ) : (
           <FormSuccess />
         )}
-      </div>
+      </FormContainer>
     </>
   );
 };

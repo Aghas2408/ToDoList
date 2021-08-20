@@ -33,7 +33,7 @@ namespace ToDoList_API.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] SignUpDTO registerRequest)
         {
-            await _registerService.SignUp(registerRequest); 
+            await _registerService.SignUp(registerRequest);
             return Ok();
         }
     }

@@ -1,17 +1,22 @@
 import React from 'react';
-import '../../components/Form.css';
 import FormSignIn from './FormSignIn';
+import {
+  FormContainer,
+  CloseBtn,
+  FormContainerLeft,
+  FormImg,
+} from '../FormElemetsStyles';
 
 const Login = () => {
   return (
     <>
-      <div className='form-container'>
-        <span className='close-btn'>x</span>
-        <div className='form-content-left'>
-          <img src='img/img-2.png' alt='spaceship' className='form-img' />
-        </div>
+      <FormContainer>
+        <CloseBtn>x</CloseBtn>
+        <FormContainerLeft>
+          <FormImg src='img/img-2.png' alt='spaceship' />
+        </FormContainerLeft>
         <FormSignIn />
-      </div>
+      </FormContainer>
     </>
   );
 };

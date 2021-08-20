@@ -69,7 +69,7 @@ namespace ToDoList.Controllers
         }
 
         //// DELETE: api/ToDoes/5
-                [Authorize]
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteToDo(int id)
         {

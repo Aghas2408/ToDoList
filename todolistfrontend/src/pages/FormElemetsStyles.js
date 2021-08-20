@@ -1,4 +1,6 @@
-.form-container {
+import styled from 'styled-components';
+
+export const FormContainer = styled.div`
   margin: 100px auto;
   width: 1000px;
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.2);
@@ -7,9 +9,9 @@
   height: 600px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-}
+`;
 
-.close-btn {
+export const CloseBtn = styled.span`
   position: absolute;
   top: 2%;
   right: 3%;
@@ -17,9 +19,9 @@
   z-index: 1;
   color: #fff;
   cursor: pointer;
-}
+`;
 
-.form-content-left {
+export const FormContainerLeft = styled.div`
   background: linear-gradient(
     90deg,
     rgb(39, 176, 255) 0%,
@@ -27,40 +29,24 @@
   );
   border-radius: 10px 0 0 10px;
   position: relative;
-}
+`;
 
-.form-img {
+export const FormImg = styled.img`
   width: 80%;
   height: 80%;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
+`;
 
-.form-img-2 {
-  width: 60%;
-  height: 60%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.form-success {
-  text-align: center;
-  font-size: 24px;
-  margin-top: 80px;
-  color: #fff;
-}
-
-.form-content-right {
+export const FormContainerRight = styled.div`
   border-radius: 0 10px 10px 0;
   position: relative;
   background: linear-gradient(90deg, rgb(40, 40, 40) 0%, rgb(17, 17, 17) 100%);
-}
+`;
 
-.form {
+export const Form = styled.form`
   position: absolute;
   top: 50%;
   left: 50%;
@@ -71,35 +57,35 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
 
-.form h1 {
-  font-size: 1rem;
-  text-align: start;
-  width: 80%;
-  margin-bottom: 1rem;
-  color: #fff;
-}
+  h1 {
+    font-size: 1rem;
+    text-align: start;
+    width: 80%;
+    margin-bottom: 1rem;
+    color: #fff;
+  }
+`;
 
-.form-inputs {
+export const FormInputsContainer = styled.div`
   margin-bottom: 0.5rem;
   width: 80%;
-}
 
-.form-inputs p {
-  font-size: 0.8rem;
-  margin-top: 0.5rem;
-  color: #f00e0e;
-}
+  p {
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    color: #f00e0e;
+  }
+`;
 
-.form-label {
+export const FormLable = styled.div`
   display: inline-block;
   font-size: 0.8rem;
   margin-bottom: 6px;
   color: #fff;
-}
+`;
 
-.form-input {
+export const FormInput = styled.input`
   display: block;
   padding-left: 10px;
   outline: none;
@@ -107,14 +93,14 @@
   height: 40px;
   width: 100%;
   border: none;
-}
 
-.form-input::placeholder {
-  color: #595959;
-  font-size: 12px;
-}
+  ::placeholder {
+    color: #595959;
+    font-size: 12px;
+  }
+`;
 
-.form-input-btn {
+export const FormInputBtn = styled.button`
   width: 80%;
   height: 50px;
   margin-top: 10px;
@@ -128,28 +114,44 @@
   border: none;
   color: #fff;
   font-size: 1rem;
-}
 
-.form-input-btn:hover {
-  cursor: pointer;
-  background: linear-gradient(
-    90deg,
-    rgb(39, 143, 255) 0%,
-    rgb(12, 99, 250) 100%
-  );
-  transition: all 0.4s ease-out;
-}
+  :hover {
+    cursor: pointer;
+    background: linear-gradient(
+      90deg,
+      rgb(39, 143, 255) 0%,
+      rgb(12, 99, 250) 100%
+    );
+    transition: all 0.4s ease-out;
+  }
+`;
 
-.form-input-login {
+export const FormSpan = styled.span`
   font-size: 0.8rem;
   margin-top: 10px;
   color: #fff;
   width: 80%;
   text-align: center;
-}
 
-.form-input-login a {
-  text-decoration: none;
-  color: #27cdff;
-  font-weight: 600;
-}
+  a {
+    text-decoration: none;
+    color: #27cdff;
+    font-weight: 600;
+  }
+`;
+
+export const FormSuccessContainer = styled.div`
+  text-align: center;
+  font-size: 24px;
+  margin-top: 80px;
+  color: #fff;
+`;
+
+export const FormSuccessImage = styled.img`
+  width: 60%;
+  height: 60%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;

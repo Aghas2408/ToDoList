@@ -1,15 +1,19 @@
-import React from 'react'
+import React from 'react';
+import {
+  FormContainerRight,
+  FormSuccessContainer,
+  FormSuccessImage,
+} from '../../FormElemetsStyles';
 
 const FormSuccess = () => {
-    return (
-        <div className="form-content-right">
-            <div className="form-success">We have received
-            your request!
-            </div>
-            <img src='img/img-3.svg' alt='success-image'
-            className='form-img-2'/>
-        </div>
-    )
-}
+  return (
+    <FormContainerRight>
+      <FormSuccessContainer>
+        We have received your request!
+      </FormSuccessContainer>
+      <FormSuccessImage src='img/img-3.svg' alt='success-image' />
+    </FormContainerRight>
+  );
+};
 
-export default FormSuccess
+export default FormSuccess;

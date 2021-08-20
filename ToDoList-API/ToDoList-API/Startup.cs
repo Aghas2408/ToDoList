@@ -60,10 +60,12 @@ namespace ToDoList_API
                             .AllowAnyMethod();
                 });
             });
+
             services.AddDbContext<ToDoListDBContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddControllers();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ToDoList_API", Version = "v1" });
@@ -100,7 +102,7 @@ namespace ToDoList_API
             services.AddTransient<IRegisterService, RegisterService>();
             services.AddTransient<IAuthService, AuthService>();
             services.AddTransient<IPasswordHasherService, PasswordHasherService>();
-            services.AddSingleton<JWTHandler>();
+            services.AddTransient<JWTHandler>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(o =>
             {
@@ -121,6 +123,7 @@ namespace ToDoList_API
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseCors("MyPolicy");
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

@@ -15,6 +15,7 @@ namespace ToDoList.Domain.Services
         private readonly IUserService _userService;
         private readonly IPasswordHasherService _passwordHasherService;
         private readonly JWTHandler _jwtHandler;
+
         public AuthService(IUserService userService, IPasswordHasherService passwordHasherService, JWTHandler jwtHandler)
         {
             _userService = userService;

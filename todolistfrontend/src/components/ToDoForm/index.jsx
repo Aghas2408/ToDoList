@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import { FormContainer, InputContainer, ToDoButton } from './styles';
 
 const ToDoForm = ({ onSubmit }) => {
   const [input, setInput] = useState('');
@@ -10,6 +10,7 @@ const ToDoForm = ({ onSubmit }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!input) return;
     onSubmit({
       text: input,
     });
@@ -17,17 +18,16 @@ const ToDoForm = ({ onSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className='todo-form'>
-      <input
+    <FormContainer onSubmit={handleSubmit}>
+      <InputContainer
         type='text'
         placeholder='Add a todo'
         value={input}
         name='text'
         onChange={handleChange}
-        className='todo-input edit'
       />
-      <button className='todo-button'>Add</button>
-    </form>
+      <ToDoButton>Add</ToDoButton>
+    </FormContainer>
   );
 };
 

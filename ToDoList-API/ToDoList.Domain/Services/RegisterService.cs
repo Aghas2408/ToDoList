@@ -17,7 +17,7 @@ namespace ToDoList.Domain.Services
             _passwordHasherService = passwordHasherService;
         }
 
-        public async  Task SignUp(SignUpDTO signUpDto)
+        public async Task SignUp(SignUpDTO signUpDto)
         {
             var users = await _userService.GetAll();
 
@@ -47,8 +47,6 @@ namespace ToDoList.Domain.Services
             };
 
             await _userService.Create(registrationUser);
-
-            
         }
     }
 }

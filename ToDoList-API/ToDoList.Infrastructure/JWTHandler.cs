@@ -70,7 +70,6 @@ namespace ToDoList.Infrastructure
                 );
 
             return new JwtSecurityTokenHandler().WriteToken(token);
-
         }
     }
 }
