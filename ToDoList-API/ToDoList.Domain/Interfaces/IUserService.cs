@@ -13,5 +13,7 @@ namespace ToDoList.Domain.Interfaces
         Task Create(UserDTO user);
 
         Task<UserDTO> GetById(int userId);
+
+        int GetUserId();
     }
 }

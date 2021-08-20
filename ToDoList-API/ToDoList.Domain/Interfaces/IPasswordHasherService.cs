@@ -8,6 +8,6 @@ namespace ToDoList.Domain.Interfaces
     {
         string HashPassword(string password);
 
-        bool VerifyPassword(string password, string passwordHash);
+        bool VerifyPassword(string inputedPassword, string passwordInHashCone);
     }
 }

@@ -23,7 +23,6 @@ namespace ToDoList.Infrastructure
         {
             string accessToken = GenerateAccessToken(user);
             string refreshToekn = GenerateRefreshToken();
-
             return  Task.FromResult(new AuthResponse()
             {
                 AccessToken = accessToken,
@@ -38,7 +37,6 @@ namespace ToDoList.Infrastructure
                 new Claim(ClaimTypes.Email, user.Email),
                 new Claim(ClaimTypes.Name, user.UserName),
             };
-
             return GenerateToken(
                 _configuration.AccessTokenSecret,
                 _configuration.Issuer,
@@ -59,7 +57,6 @@ namespace ToDoList.Infrastructure
         {
             SecurityKey key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey));
             SigningCredentials credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-
             JwtSecurityToken token = new JwtSecurityToken(
                 issuer,
                 audience,
@@ -68,7 +65,6 @@ namespace ToDoList.Infrastructure
                 DateTime.UtcNow.AddMinutes(expirationMinutes),
                 credentials
                 );
-
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
     }

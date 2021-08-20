@@ -45,8 +45,6 @@ namespace ToDoList_API
                 .NewConfig();
             TypeAdapterConfig<AuthResponse, AuthResponseDTO>
                 .NewConfig();
-            TypeAdapterConfig<AuthResponseDTO, AuthResponse>
-                .NewConfig();
 
             AuthenticationConfiguration authenticationConfiguration = new AuthenticationConfiguration();
             Configuration.Bind("Authentication", authenticationConfiguration);
@@ -55,7 +53,7 @@ namespace ToDoList_API
             {
                 policies.AddPolicy("MyPolicy", builder =>
                 {
-                    builder.WithOrigins("http://localhost:3000")
+                    builder.WithOrigins(authenticationConfiguration.Audience)
                             .AllowAnyHeader()
                             .AllowAnyMethod();
                 });
@@ -103,6 +101,8 @@ namespace ToDoList_API
             services.AddTransient<IAuthService, AuthService>();
             services.AddTransient<IPasswordHasherService, PasswordHasherService>();
             services.AddTransient<JWTHandler>();
+
+            services.AddHttpContextAccessor();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(o =>
             {

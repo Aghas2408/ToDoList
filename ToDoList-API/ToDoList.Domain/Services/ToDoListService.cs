@@ -19,9 +19,9 @@ namespace ToDoList.Domain.Services
             _todoRepository = todoRepository;
         }
 
-        public async Task Create(CreateToDoDTO createToDo, string id)
+        public async Task Create(CreateToDoDTO createToDo, int id)
         {
-            createToDo.UserId = Int32.Parse(id);
+            createToDo.UserId = id;
             var toDo = createToDo.Adapt<ToDo>();
             await _todoRepository.Create(toDo);
         }
@@ -38,10 +38,10 @@ namespace ToDoList.Domain.Services
             return todoDto;
         }
 
-        public async Task<List<ToDoDTO>> GetToDoList(string id)
+        public async Task<List<ToDoDTO>> GetToDoList(int id)
         {
             var todoList = await _todoRepository.GetAll();
-            var list = todoList.Where(i => i.UserId == Int32.Parse(id));
+            var list = todoList.Where(i => i.UserId == id);
             var todoListDto = list.Adapt<List<ToDoDTO>>();
 
             return todoListDto;

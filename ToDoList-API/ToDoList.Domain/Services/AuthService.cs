@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using Mapster;
+using ToDoList.Domain.Exceptions;
 using ToDoList.Domain.Interfaces;
 using ToDoList.Domain.Models;
 using ToDoList.Infrastructure;
@@ -29,13 +30,13 @@ namespace ToDoList.Domain.Services
             var userDTO = users.Find(o => o.UserName == signInDto.UserName);
             if (userDTO == null)
             {
-                throw new UnauthorizedAccessException();
+                throw new UserNotFoud("User with this username not found");
             }
 
             bool isCorrectPassword = _passwordHasherService.VerifyPassword(signInDto.Password, userDTO.PasswordHash);
             if (!isCorrectPassword)
             {
-                throw new UnauthorizedAccessException();
+                throw new PasswordConfirmation("password confirmation does not match");
             }
 
             var user = userDTO.Adapt<User>();

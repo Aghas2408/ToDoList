@@ -8,7 +8,7 @@ namespace ToDoList.Infrastructure
     {
         public string AccessTokenSecret { get; set; }
 
-        public int AccessTokenExpirationMinutes { get; set; }
+        public double AccessTokenExpirationMinutes { get; set; }
          
         public string Issuer { get; set; }
 

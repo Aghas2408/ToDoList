@@ -17,27 +17,26 @@ namespace ToDoList.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-
-    public class ToDoesController : ControllerBase
+    public class ToDoController : ControllerBase
     {
         private readonly IToDoListSerivce _toDoListSerivce;
+        private readonly IUserService _userService;
 
-        public ToDoesController(IToDoListSerivce toDoListSerivce)
+        public ToDoController(IToDoListSerivce toDoListSerivce, IUserService userService)
         {
             _toDoListSerivce = toDoListSerivce;
+            _userService = userService;
         }
 
-        // GET: api/ToDoes
         [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetToDos()
         {
-            var userId = HttpContext.User.FindFirst("Id").Value;
+            var userId = _userService.GetUserId();
             var result = await _toDoListSerivce.GetToDoList(userId);
             return Ok(result);
         }
 
-        // GET: api/ToDoes/5
         [HttpGet("{id}")]
         public async Task<IActionResult> GetToDo(int id)
         {
@@ -45,30 +44,25 @@ namespace ToDoList.Controllers
             return Ok(result);
         }
 
-        // PUT: api/ToDoes/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutToDo([FromRoute] int id, ToDoDTO toDo)
         {
-            toDo.UserId = Int32.Parse(HttpContext.User.FindFirst("Id").Value);
+            toDo.UserId = _userService.GetUserId();
             toDo.Id = id;
             await _toDoListSerivce.Update(toDo);
-            return Ok(204);
+            return NoContent();
         }
 
-        // POST: api/ToDoes
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> PostToDo(CreateToDoDTO toDo)
         {
-            var userId = HttpContext.User.FindFirst("Id").Value;
+            var userId = _userService.GetUserId();
             await _toDoListSerivce.Create(toDo, userId);
             return Ok(toDo);
         }
 
-        //// DELETE: api/ToDoes/5
         [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteToDo(int id)

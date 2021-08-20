@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using ToDoList.Domain.Exceptions;
 using ToDoList.Domain.Interfaces;
 using ToDoList.Domain.Models;
 
@@ -23,19 +24,7 @@ namespace ToDoList.Domain.Services
 
             if (signUpDto.Password != signUpDto.ConfirmPassword)
             {
-                throw new Exception();
-            }
-
-            UserDTO existingUserByEmail = users.Find(o => o.Email == signUpDto.Email);
-            if (existingUserByEmail != null)
-            {
-                throw new Exception();
-            }
-
-            UserDTO existingUserByUserName = users.Find(o => o.UserName == signUpDto.UserName);
-            if (existingUserByEmail != null)
-            {
-                throw new Exception();
+                throw new PasswordConfirmation("password confirmation does not match");
             }
 
             string passowrdHash = _passwordHasherService.HashPassword(signUpDto.Password);
