@@ -5,9 +5,10 @@ import {
   removeToDo,
   updateToDo,
 } from '../../services/todo.services';
-import { HeaderContainer } from './styles';
 import ToDoForm from '../ToDoForm';
 import ToDo from '../ToDo';
+import { HeaderContainer } from './styles';
+
 
 const ToDoList = () => {
   const [todos, setTodos] = useState([]);
@@ -25,7 +26,6 @@ const ToDoList = () => {
   };
 
   const removeToDoData = async (id) => {
-    debugger;
     const data = await removeToDo(id);
     const removeArr = [...todos].filter((todo) => todo.id !== data);
     setTodos(removeArr);

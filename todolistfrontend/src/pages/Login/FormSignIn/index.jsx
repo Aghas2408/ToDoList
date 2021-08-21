@@ -2,8 +2,8 @@ import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import axios from 'axios';
 import { AuthContext } from '../../../context/Auth';
+import { submitLogin } from '../../../services/auth.services';
 import {
   FormContainerRight,
   Form,
@@ -22,10 +22,7 @@ const FormSignIn = () => {
   });
 
   const submitForm = async (props) => {
-    const res = await axios.post('https://localhost:5001/api/Auth/login', {
-      username: props.username,
-      password: props.password,
-    });
+    const res = submitLogin(props);
     if (res && res.data) {
       const data = res.data;
       login(data.accessToken);

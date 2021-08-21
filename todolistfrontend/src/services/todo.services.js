@@ -1,8 +1,10 @@
 import axios from 'axios';
+import { API_URL } from '../constants'
+import { GetToken } from './storage.services'
 
 axios.interceptors.request.use(
   function (config) {
-    const token = localStorage.getItem('token');
+    const token = GetToken();
     config.headers.Authorization = `Bearer ${token}`;
     return config;
   },
@@ -11,8 +13,6 @@ axios.interceptors.request.use(
     return Promise.reject(error);
   }
 );
-
-const API_URL = process.env.REACT_APP_API_URL || '';
 
 export const addToDo = async (todo) => {
   try {

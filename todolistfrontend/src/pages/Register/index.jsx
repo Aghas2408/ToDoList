@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import FormSignUp from './FormSignUp';
 import FormSuccess from './FormSuccess';
-import axios from 'axios';
+import { submitRegistration } from '../../services/auth.services';
 import {
   FormContainer,
   CloseBtn,
@@ -12,12 +12,7 @@ import {
 const Register = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const submitForm = async ({ values }) => {
-    await axios.post('https://localhost:5001/api/Auth/register', {
-      email: values.email,
-      username: values.username,
-      password: values.password,
-      confirmPassword: values.password2,
-    });
+    await submitRegistration({values});
     setIsSubmitted(true);
   };
 
