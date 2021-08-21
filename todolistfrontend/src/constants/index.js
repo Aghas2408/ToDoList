@@ -1,7 +1,7 @@
 export const ROUTES = {
-    LOGIN: '/login',
-    REGISTER: '/register',
-    HOME: '/'
-} 
+  LOGIN: '/login',
+  REGISTER: '/register',
+  HOME: '/',
+};
 
 export const API_URL = process.env.REACT_APP_API_URL || '';

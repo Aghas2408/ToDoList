@@ -5,12 +5,12 @@ import { GetToken } from './storage.services'
 const ApiUrl = `${API_URL}/ToDoes`;
 
 axios.interceptors.request.use(
-  function (config) {
+   (config) => {
     const token = GetToken();
     config.headers.Authorization = `Bearer ${token}`;
     return config;
   },
-  function (error) {
+  (error) => {
     return Promise.reject(error);
   }
 );

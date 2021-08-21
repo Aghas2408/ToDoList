@@ -1,8 +1,10 @@
 import axios from 'axios';
 import { API_URL } from '../constants';
 
+const ApiUrl = `${API_URL}/Auth`
+
 export const signUp = async ({ values }) => {
-  await axios.post(`${API_URL}/Auth/register`, {
+  await axios.post(`${ApiUrl}/register`, {
     email: values.email,
     username: values.username,
     password: values.password,
@@ -11,7 +13,7 @@ export const signUp = async ({ values }) => {
 };
 
 export const signIn = async (props) => {
-  await axios.post(`${API_URL}/Auth/login`, {
+  await axios.post(`${ApiUrl}/login`, {
     username: props.username,
     password: props.password,
   });
