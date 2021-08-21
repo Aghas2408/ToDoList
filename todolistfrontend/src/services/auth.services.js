@@ -1,10 +1,10 @@
-import axios from 'axios';
+import httpClient from '../httpClient'
 import { API_URL } from '../constants';
 
 const ApiUrl = `${API_URL}/Auth`
 
 export const signUp = async ({ values }) => {
-  await axios.post(`${ApiUrl}/register`, {
+  await httpClient.post(`${ApiUrl}/register`, {
     email: values.email,
     username: values.username,
     password: values.password,
@@ -13,7 +13,7 @@ export const signUp = async ({ values }) => {
 };
 
 export const signIn = async (props) => {
-  await axios.post(`${ApiUrl}/login`, {
+  await httpClient.post(`${ApiUrl}/login`, {
     username: props.username,
     password: props.password,
   });

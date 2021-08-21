@@ -1,6 +1,7 @@
 import React, { useState, createContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { GetToken } from '../services/storage.services';
+import { getToken } from '../services/storage.services';
+import { setToken } from '../services/storage.services';
 
 export const AuthContext = createContext({
   isAuthenticated: false,
@@ -10,7 +11,7 @@ export const AuthContext = createContext({
 
 export const AuthContextProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const token = GetToken();
+  const token = getToken();
 
   useEffect(() => {
     if (!token) return;
@@ -27,7 +28,7 @@ export const AuthContextProvider = ({ children }) => {
   const history = useHistory();
 
   const login = (token) => {
-    localStorage.setItem('token', token);
+    setToken(token);
     setIsAuthenticated(true);
     history.push('/');
   };
