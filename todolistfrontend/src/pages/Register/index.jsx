@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import FormSignUp from './FormSignUp';
 import FormSuccess from './FormSuccess';
-import { submitRegistration } from '../../services/auth.services';
+import { signUp } from '../../services/auth.services';
 import {
   FormContainer,
   CloseBtn,
@@ -12,7 +12,7 @@ import {
 const Register = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const submitForm = async ({ values }) => {
-    await submitRegistration({values});
+    await signUp({values});
     setIsSubmitted(true);
   };
 

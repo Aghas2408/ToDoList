@@ -2,6 +2,8 @@ import axios from 'axios';
 import { API_URL } from '../constants'
 import { GetToken } from './storage.services'
 
+const ApiUrl = `${API_URL}/ToDoes`;
+
 axios.interceptors.request.use(
   function (config) {
     const token = GetToken();
@@ -9,7 +11,6 @@ axios.interceptors.request.use(
     return config;
   },
   function (error) {
-    // Do something with request error
     return Promise.reject(error);
   }
 );
@@ -19,7 +20,7 @@ export const addToDo = async (todo) => {
     if (!todo.text || /^\s*$/.test(todo.text)) {
       return;
     }
-    const res = await axios.post(`${API_URL}/ToDoes`, { toDoName: todo.text });
+    const res = await axios.post(ApiUrl, { toDoName: todo.text });
     const data = res.data;
     return data;
   } catch (e) {
@@ -29,7 +30,7 @@ export const addToDo = async (todo) => {
 
 export const removeToDo = async (id) => {
   try {
-    const res = await axios.delete(`${API_URL}/ToDoes/${id}`);
+    const res = await axios.delete(`${ApiUrl}/${id}`);
     const data = res.data;
     return data;
   } catch (e) {
@@ -39,7 +40,7 @@ export const removeToDo = async (id) => {
 
 export const updateToDo = async (todo) => {
   try {
-    await axios.put(`${API_URL}/ToDoes/${todo.id}`, {
+    await axios.put(`${ApiUrl}/${todo.id}`, {
       id: todo.id,
       toDoName: todo.toDoName,
       checked: !todo.checked,
@@ -52,7 +53,7 @@ export const updateToDo = async (todo) => {
 
 export const getToDos = async () => {
   try {
-    const res = await axios.get(`${API_URL}/ToDoes`);
+    const res = await axios.get(ApiUrl);
     const data = res.data;
     return data;
   } catch (e) {

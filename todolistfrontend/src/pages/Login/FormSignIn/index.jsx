@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { AuthContext } from '../../../context/Auth';
-import { submitLogin } from '../../../services/auth.services';
+import { signIn } from '../../../services/auth.services';
 import {
   FormContainerRight,
   Form,
@@ -22,7 +22,7 @@ const FormSignIn = () => {
   });
 
   const submitForm = async (props) => {
-    const res = submitLogin(props);
+    const res = signIn(props);
     if (res && res.data) {
       const data = res.data;
       login(data.accessToken);
