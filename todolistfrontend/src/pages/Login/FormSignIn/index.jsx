@@ -21,14 +21,6 @@ const FormSignIn = () => {
     password: yup.string().required(),
   });
 
-  const submitForm = async (props) => {
-    const res = signIn(props);
-    if (res && res.data) {
-      const data = res.data;
-      login(data.accessToken);
-    }
-  };
-
   const {
     register,
     handleSubmit,
@@ -36,6 +28,14 @@ const FormSignIn = () => {
   } = useForm({
     resolver: yupResolver(schema),
   });
+
+  const submitForm = async (props) => {
+    const res = signIn(props);
+    if (res && res.data) {
+      const data = res.data;
+      login(data.accessToken);
+    }
+  };
 
   return (
     <FormContainerRight>

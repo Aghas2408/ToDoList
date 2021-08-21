@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { ROUTES } from '../../constants';
 import { getToken } from '../../services/storage.services';
 
-const ProtectedRoute = ({ component: Component, auth, ...restOfProps }) => {
+const ProtectedRoute = ({ component: Component, auth}) => {
   const token = getToken();
-  const [authenticated, setAuthenticated] = useState(token);
 
-  return authenticated ? <Component /> : <Redirect to={ROUTES.LOGIN} />;
+  return token ? <Component /> : <Redirect to={ROUTES.LOGIN} />;
 };
 
 export default ProtectedRoute;

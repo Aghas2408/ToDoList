@@ -20,12 +20,12 @@ export const InputContainer = styled.input`
 `;
 
 export const ToDoButton = styled.button`
-    padding: 16px;
+  padding: 16px;
   border: none;
   border-radius: 0 4px 4px 0;
   cursor: pointer;
   outline: none;
-  background-color: #1AC4F9;
+  background-color: #1ac4f9;
   color: rgb(0, 0, 0);
   text-transform: capitalize;
-`
+`;
