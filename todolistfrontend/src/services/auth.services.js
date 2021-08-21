@@ -12,9 +12,9 @@ export const signUp = async ({ values }) => {
   });
 };
 
-export const signIn = async (props) => {
+export const signIn = async ({ username, password }) => {
   await httpClient.post(`${ApiUrl}/login`, {
-    username: props.username,
-    password: props.password,
+    username: username,
+    password: password,
   });
 };

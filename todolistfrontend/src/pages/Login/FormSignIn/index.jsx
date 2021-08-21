@@ -30,7 +30,7 @@ const FormSignIn = () => {
   });
 
   const submitForm = async (props) => {
-    const res = signIn(props);
+    const res = signIn(props.username, props.password);
     if (res && res.data) {
       const data = res.data;
       login(data.accessToken);

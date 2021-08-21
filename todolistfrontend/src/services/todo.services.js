@@ -6,7 +6,7 @@ const ApiUrl = `${API_URL}/ToDoes`;
 
 export const addToDo = async (todo) => {
   try {
-    if (!todo.text || /^\s*$/.test(todo.text)) {
+    if (!todo.text) {
       return;
     }
     const res = await httpClient.post(ApiUrl, { toDoName: todo.text });
