@@ -27,14 +27,6 @@ namespace ToDoList.Domain.Services
             await _userRepository.Create(_user);
         }
 
-        public async Task<List<UserDTO>> GetAll()
-        {
-            var users = await _userRepository.GetAll();
-            var usersDto = users.Adapt<List<UserDTO>>();
-
-            return usersDto;
-        }
-
         public async Task<UserDTO> GetById(int userId)
         {
             var user = await _userRepository.GetById(userId);

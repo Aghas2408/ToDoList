@@ -40,7 +40,7 @@ namespace ToDoList.Domain.Services
 
         public async Task<List<ToDoDTO>> GetToDoList(int id)
         {
-            var todoList = await _todoRepository.GetAll(id);
+            var todoList = await _todoRepository.GetAll(i => i.UserId == id);
             var todoListDto = todoList.Adapt<List<ToDoDTO>>();
 
             return todoListDto;

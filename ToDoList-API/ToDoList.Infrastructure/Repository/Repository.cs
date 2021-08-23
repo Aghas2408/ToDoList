@@ -4,10 +4,11 @@ using ToDoList.Infrastructure.Models;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using System;
 
 namespace ToDoList.Domain
 {
-    public class Repository<TEntity> : IRepository<TEntity> where TEntity : ToDo
+    public class Repository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity
     {
         private readonly ToDoListDBContext _context;
 
@@ -16,9 +17,9 @@ namespace ToDoList.Domain
             _context = context;
         }
 
-        public async Task<IEnumerable<TEntity>> GetAll(int id)
+        public async Task<IEnumerable<TEntity>> GetAll(Func<TEntity, bool> predicate)
         {
-            return await _context.Set<TEntity>().Where(i => i.UserId == id).ToListAsync();
+            return await _context.Set<TEntity>().Where(predicate).AsQueryable().ToListAsync();
         }
 
         public async Task<TEntity> GetById(int id)

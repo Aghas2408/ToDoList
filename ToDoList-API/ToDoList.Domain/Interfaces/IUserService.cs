@@ -8,8 +8,6 @@ namespace ToDoList.Domain.Interfaces
 {
     public interface IUserService
     {
-        Task<List<UserDTO>> GetAll();
-
         Task Create(UserDTO user);
 
         Task<UserDTO> GetById(int userId);

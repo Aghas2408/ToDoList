@@ -26,8 +26,8 @@ namespace ToDoList.Domain.Services
 
         public async Task<AuthResponseDTO> SignIn(SignInDTO signInDto)
         {
-            var users = await _userService.GetAll();
-            var userDTO = users.Find(o => o.UserName == signInDto.UserName);
+            var userDto = signInDto.Adapt<User>();
+            var userDTO = await _userService.GetById(userDto.Id);
             if (userDTO == null)
             {
                 throw new UserNotFoud("User with this username not found");

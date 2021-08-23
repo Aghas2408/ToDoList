@@ -20,8 +20,6 @@ namespace ToDoList.Domain.Services
 
         public async Task SignUp(SignUpDTO signUpDto)
         {
-            var users = await _userService.GetAll();
-
             if (signUpDto.Password != signUpDto.ConfirmPassword)
             {
                 throw new PasswordConfirmation("password confirmation does not match");

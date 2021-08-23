@@ -11,7 +11,7 @@ namespace ToDoList.Infrastructure.Models
     {
         Task<TEntity> GetById(int id);
 
-        Task<IEnumerable<TEntity>> GetAll(int id);
+        Task<IEnumerable<TEntity>> GetAll(Func<TEntity, bool> predicate);
 
         Task<int> Update(TEntity entity);
 
