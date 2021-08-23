@@ -33,11 +33,9 @@ const ToDoList = () => {
 
   const updateToDoData = async (todo) => {
     const data = await updateToDo(todo);
-    const newToDos = todos.map((item) => {
-      if (data === item.id) return { ...item, checked: !item.checked };
-      return item;
-    });
-    setTodos(newToDos);
+    const toDo = todos.find(item => item.id == data);
+    todo.checked = !todo.checked;
+    setTodos([...todos,toDo]);
   };
 
   useEffect(() => {

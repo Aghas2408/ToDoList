@@ -48,7 +48,7 @@ const FormSignUp = ({ submitForm }) => {
         <FormInputsContainer>
           <FormLable htmlFor='username'>UserName</FormLable>
           <FormInput
-            {...register('password')}
+            {...register('password2')}
             id='username'
             type='text'
             name='username'

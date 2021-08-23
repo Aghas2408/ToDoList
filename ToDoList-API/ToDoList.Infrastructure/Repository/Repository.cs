@@ -47,5 +47,10 @@ namespace ToDoList.Domain
 
             await _context.SaveChangesAsync();
         }
+
+        public async Task<IEnumerable<TEntity>> GetAll()
+        {
+            return await _context.Set<TEntity>().ToListAsync();
+        }
     }
 }

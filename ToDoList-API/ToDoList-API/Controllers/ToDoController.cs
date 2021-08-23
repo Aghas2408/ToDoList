@@ -15,6 +15,7 @@ using System.Security.Claims;
 
 namespace ToDoList.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ToDoController : ControllerBase
@@ -28,7 +29,6 @@ namespace ToDoList.Controllers
             _userService = userService;
         }
 
-        [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetToDos()
         {
@@ -44,7 +44,6 @@ namespace ToDoList.Controllers
             return Ok(result);
         }
 
-        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutToDo([FromRoute] int id, ToDoDTO toDo)
         {
@@ -54,7 +53,6 @@ namespace ToDoList.Controllers
             return NoContent();
         }
 
-        [Authorize]
         [HttpPost]
         public async Task<IActionResult> PostToDo(CreateToDoDTO toDo)
         {
@@ -63,7 +61,6 @@ namespace ToDoList.Controllers
             return Ok(toDo);
         }
 
-        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteToDo(int id)
         {

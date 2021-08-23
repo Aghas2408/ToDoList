@@ -30,13 +30,13 @@ namespace ToDoList.Domain.Services
             var userDTO = await _userService.GetById(userDto.Id);
             if (userDTO == null)
             {
-                throw new UserNotFoud("User with this username not found");
+                throw new UserNotFoudException("User with this username not found");
             }
 
             bool isCorrectPassword = _passwordHasherService.VerifyPassword(signInDto.Password, userDTO.PasswordHash);
             if (!isCorrectPassword)
             {
-                throw new PasswordConfirmation("password confirmation does not match");
+                throw new PasswordConfirmationException("password confirmation does not match");
             }
 
             var user = userDTO.Adapt<User>();

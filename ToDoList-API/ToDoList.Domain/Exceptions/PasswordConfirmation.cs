@@ -4,9 +4,9 @@ using System.Text;
 
 namespace ToDoList.Domain.Exceptions
 {
-    public class PasswordConfirmation : Exception
+    public class PasswordConfirmationException : Exception
     {
-        public PasswordConfirmation(string message)
+        public PasswordConfirmationException(string message)
             : base(message)
         { }
     }

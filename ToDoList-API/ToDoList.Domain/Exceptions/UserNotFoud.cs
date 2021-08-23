@@ -4,9 +4,9 @@ using System.Text;
 
 namespace ToDoList.Domain.Exceptions
 {
-    public class UserNotFoud : Exception
+    public class UserNotFoudException : Exception
     {
-        public UserNotFoud(string message)
+        public UserNotFoudException(string message)
             : base(message)
         { }
     }

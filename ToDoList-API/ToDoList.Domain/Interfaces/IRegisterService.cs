@@ -9,6 +9,6 @@ namespace ToDoList.Domain.Interfaces
 {
     public interface IRegisterService
     {
-        Task SignUp(SignUpDTO signInDto);
+        Task<AuthResponseDTO> SignUp(SignUpDTO signInDto);
     }
 }

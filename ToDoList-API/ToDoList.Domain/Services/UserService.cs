@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Mapster;
 using Microsoft.AspNetCore.Http;
+using ToDoList.Domain.Exceptions;
 using ToDoList.Domain.Interfaces;
 using ToDoList.Domain.Models;
 using ToDoList.Infrastructure.Models;
@@ -37,7 +38,14 @@ namespace ToDoList.Domain.Services
         public int GetUserId()
         {
             var id = _httpContextAccessor.HttpContext.User.FindFirst("Id").Value;
-            return Int32.Parse(id);
+            if (id != null)
+            {
+                return Int32.Parse(id);
+            }
+            else
+            {
+                throw new UserNotFoudException("User Id in HttpContext not found");
+            }
         }
     }
 }

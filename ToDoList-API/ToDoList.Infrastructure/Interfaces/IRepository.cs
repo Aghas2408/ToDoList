@@ -13,6 +13,8 @@ namespace ToDoList.Infrastructure.Models
 
         Task<IEnumerable<TEntity>> GetAll(Func<TEntity, bool> predicate);
 
+        Task<IEnumerable<TEntity>> GetAll();
+
         Task<int> Update(TEntity entity);
 
         Task Create(TEntity entitys);

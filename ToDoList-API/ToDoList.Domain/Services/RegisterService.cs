@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Mapster;
 using Microsoft.AspNetCore.Mvc;
 using ToDoList.Domain.Exceptions;
 using ToDoList.Domain.Interfaces;
 using ToDoList.Domain.Models;
+using ToDoList.Infrastructure;
+using ToDoList.Infrastructure.Models;
 
 namespace ToDoList.Domain.Services
 {
@@ -11,18 +14,20 @@ namespace ToDoList.Domain.Services
     {
         private readonly IUserService _userService;
         private readonly IPasswordHasherService _passwordHasherService;
+        private readonly JWTHandler _jwtHandler;
 
-        public RegisterService(IUserService userService, IPasswordHasherService passwordHasherService)
+        public RegisterService(IUserService userService, IPasswordHasherService passwordHasherService, JWTHandler jwtHandler)
         {
             _userService = userService;
             _passwordHasherService = passwordHasherService;
+            _jwtHandler = jwtHandler;
         }
 
-        public async Task SignUp(SignUpDTO signUpDto)
+        public async Task<AuthResponseDTO> SignUp(SignUpDTO signUpDto)
         {
             if (signUpDto.Password != signUpDto.ConfirmPassword)
             {
-                throw new PasswordConfirmation("password confirmation does not match");
+                throw new PasswordConfirmationException("password confirmation does not match");
             }
 
             string passowrdHash = _passwordHasherService.HashPassword(signUpDto.Password);
@@ -34,6 +39,11 @@ namespace ToDoList.Domain.Services
             };
 
             await _userService.Create(registrationUser);
+            var user = registrationUser.Adapt<User>();
+            var responseDTO = await _jwtHandler.Authenticate(user);
+            var response = responseDTO.Adapt<AuthResponseDTO>();
+
+            return response;
         }
     }
 }
