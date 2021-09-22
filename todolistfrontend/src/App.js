@@ -8,7 +8,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import { AuthContextProvider } from './context/Auth';
 import { GlobalStyle } from './globalStyles';
 import { ROUTES } from './constants';
-
+// barev
 const App = () => {
   return (
     <BrowserRouter>
