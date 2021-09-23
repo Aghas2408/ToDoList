@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoList-API", "ToDoList-API\ToDoList-API.csproj", "{631B92DF-A587-4162-96E3-350BE4204C19}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoList.Infrastructure", "ToDoList.Infrastructure\ToDoList.Infrastructure.csproj", "{726624D8-028B-40BD-A350-F5BEBDCE7E35}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoList.Domain", "ToDoList.Domain\ToDoList.Domain.csproj", "{ABC42A6F-16EF-4E5A-B85E-AC8F86493AAD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{631B92DF-A587-4162-96E3-350BE4204C19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{631B92DF-A587-4162-96E3-350BE4204C19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{631B92DF-A587-4162-96E3-350BE4204C19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{631B92DF-A587-4162-96E3-350BE4204C19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{726624D8-028B-40BD-A350-F5BEBDCE7E35}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{726624D8-028B-40BD-A350-F5BEBDCE7E35}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{726624D8-028B-40BD-A350-F5BEBDCE7E35}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{726624D8-028B-40BD-A350-F5BEBDCE7E35}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABC42A6F-16EF-4E5A-B85E-AC8F86493AAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABC42A6F-16EF-4E5A-B85E-AC8F86493AAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABC42A6F-16EF-4E5A-B85E-AC8F86493AAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABC42A6F-16EF-4E5A-B85E-AC8F86493AAD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C77CDDBF-77EA-4226-AEC8-B24B886C5E00}
+	EndGlobalSection
+EndGlobal
